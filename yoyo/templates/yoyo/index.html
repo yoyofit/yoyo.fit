@@ -1,9 +1,14 @@
 {% extends 'yoyo/base.html' %}
+{% load static %}
+
+{% block style %}
+    <link rel="stylesheet" href="{% static 'yoyo/css/main.css' %}">
+{% endblock %}
 
 {% block title %}Найди своего тренера — База всех квалифицированных тренеров России{% endblock %}
 
 {% block content %}
-    <section class="hero is-dark is-fullheight">
+    <section class="hero is-danger is-homepage is-fullheight">
         <div class="hero-body">
             <div class="container">
                 <form method="post">
@@ -14,7 +19,7 @@
                         <div class="field-body">
                             <div class="field">
                                 <div class="control">
-                                    <input type="text" class="input is-large"
+                                    <input type="text" class="input is-large" autofocus
                                            placeholder="Петров Василий Иванович">
                                     <p class="help">Введите инициалы тренера. Можно искать по фамилии, имени и/или отчеству.</p>
                                 </div>
