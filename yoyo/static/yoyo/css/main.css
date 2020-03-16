@@ -9,3 +9,7 @@
     background-color: #f14668;
     color: #ffffff;
 }
+
+.is-homepage .input {
+    background: rgba(255, 255, 255, 0.75);
+}
