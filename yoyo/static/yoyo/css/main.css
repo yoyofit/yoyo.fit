@@ -4,3 +4,8 @@
     background-repeat: no-repeat;
     background-size: cover;
 }
+
+.is-homepage ::selection {
+    background-color: #f14668;
+    color: #ffffff;
+}
