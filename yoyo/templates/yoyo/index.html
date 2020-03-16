@@ -1,0 +1,33 @@
+{% extends 'yoyo/base.html' %}
+
+{% block title %}Найди своего тренера — База всех квалифицированных тренеров России{% endblock %}
+
+{% block content %}
+    <section class="hero is-dark is-fullheight">
+        <div class="hero-body">
+            <div class="container">
+                <form method="post">
+                    {% csrf_token %}
+                    <h1 class="title">База квалифицированных тренеров России</h1>
+                    <h2 class="subtitle">Найди своего тренера</h2>
+                    <div class="field is-horizontal">
+                        <div class="field-body">
+                            <div class="field">
+                                <div class="control">
+                                    <input type="text" class="input is-large"
+                                           placeholder="Петров Василий Иванович">
+                                    <p class="help">Введите инициалы тренера. Можно искать по фамилии, имени и/или отчеству.</p>
+                                </div>
+                            </div>
+                            <div class="field">
+                                <div class="control">
+                                    <button class="button is-info is-large">Найти</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+{% endblock %}

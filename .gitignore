@@ -1,0 +1,6 @@
+.idea/
+*.db
+db.sqlite3
+*.log
+.env
+*.py[cod]
