@@ -8,6 +8,9 @@ verify_ssl = true
 [packages]
 django = "*"
 unidecode = "*"
+psycopg2-binary = "*"
+gdal = "==2.4.2"
+django-configurations = "*"
 
 [requires]
 python_version = "3.7"
