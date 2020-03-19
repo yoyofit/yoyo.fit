@@ -5,6 +5,7 @@ from .core.views import site_index
 app_name = 'yoyo'
 
 urlpatterns = [
+    path('', include('yoyo.coaches.urls')),
     path(
         'robots.txt',
         TemplateView.as_view(
