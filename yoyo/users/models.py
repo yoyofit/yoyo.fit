@@ -82,6 +82,10 @@ class User(AbstractBaseUser, PermissionsMixin):
 
     objects = UserManager()
 
+    class Meta:
+        verbose_name = _('User')
+        verbose_name_plural = _('Users')
+
     def __str__(self):
         if self.get_full_name:
             return self.get_full_name
