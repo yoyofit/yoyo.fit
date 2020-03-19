@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-03-16 16:28+0000\n"
+"POT-Creation-Date: 2020-03-18 08:40+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -20,29 +20,162 @@ msgstr ""
 "%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n"
 "%100>=11 && n%100<=14)? 2 : 3);\n"
 
+#: yoyo/coaches/admin.py:13 yoyo/coaches/admin.py:30 yoyo/users/admin.py:13
+msgid "Full name"
+msgstr "Ф.И.О."
+
+#: yoyo/coaches/admin.py:16
+msgid "Bio"
+msgstr "Биография"
+
+#: yoyo/coaches/admin.py:23
+msgid "year"
+msgid_plural "years"
+msgstr[0] "год"
+msgstr[1] "года"
+msgstr[2] "лет"
+msgstr[3] "лет"
+
+#: yoyo/coaches/admin.py:26 yoyo/coaches/models.py:60
+msgid "Born date"
+msgstr "Дата рождения"
+
+#: yoyo/coaches/apps.py:8 yoyo/coaches/models.py:69
+msgid "Coaches"
+msgstr "Тренеры"
+
+#: yoyo/coaches/models.py:56 yoyo/users/models.py:71
+msgid "First name"
+msgstr "Имя"
+
+#: yoyo/coaches/models.py:57 yoyo/users/models.py:72
+msgid "Last name"
+msgstr "Фамилия"
+
+#: yoyo/coaches/models.py:58 yoyo/users/models.py:73
+msgid "Second name"
+msgstr "Отчество"
+
+#: yoyo/coaches/models.py:62
+msgid "City"
+msgstr "Город"
+
+#: yoyo/coaches/models.py:68
+msgid "Coach"
+msgstr "Тренер"
+
 #: yoyo/core/apps.py:8
 msgid "YoYo Core"
-msgstr "YoYo Ядрос"
+msgstr "YoYo Ядро"
+
+#: yoyo/templates/yoyo/search.html:10
+#, python-format
+msgid ""
+"\n"
+"            Search Result &mdash; Found %(total)s coach.\n"
+"        "
+msgid_plural ""
+"\n"
+"            Search Result &mdash; Found %(total)s coaches.\n"
+"        "
+msgstr[0] ""
+"\n"
+"        Результаты поиска &mdash; Найден %(total)s тренер.\n"
+"    "
+msgstr[1] ""
+"\n"
+"        Результаты поиска &mdash; Найдено %(total)s тренера.\n"
+"    "
+msgstr[2] ""
+"\n"
+"        Результаты поиска &mdash; Найдено %(total)s тренеров.\n"
+"    "
+msgstr[3] ""
+"\n"
+"        Результаты поиска &mdash; Найдено %(total)s тренеров.\n"
+"    "
+
+#: yoyo/templates/yoyo/search.html:16
+msgid "Coach not found"
+msgstr "Тренер не найден"
+
+#: yoyo/templates/yoyo/search.html:25
+msgid "Search Result"
+msgstr "Результаты поиска"
+
+#: yoyo/templates/yoyo/search.html:27
+#, python-format
+msgid ""
+"\n"
+"                            Found %(total)s coach.\n"
+"                        "
+msgid_plural ""
+"\n"
+"                            Found %(total)s coaches.\n"
+"                        "
+msgstr[0] ""
+"\n"
+"                        Найден %(total)s тренер.\n"
+"    "
+msgstr[1] ""
+"\n"
+"                        Найдено %(total)s тренера.\n"
+"    "
+msgstr[2] ""
+"\n"
+"                        Найдено %(total)s тренеров.\n"
+"    "
+msgstr[3] ""
+"\n"
+"                        Найдено %(total)s тренеров.\n"
+"    "
+
+#: yoyo/templates/yoyo/search.html:34
+msgid "Coach not found!"
+msgstr "Тренер не найден!"
+
+#: yoyo/templates/yoyo/search.html:36
+msgid "Maybe this coach does not have a professional education?"
+msgstr "Возможно этот тренер не имеет профессионального образования?"
+
+#: yoyo/templates/yoyo/search.html:46
+msgid "Go to home"
+msgstr "На главную"
+
+#: yoyo/templates/yoyo/search.html:67
+#, python-format
+msgid ""
+"\n"
+"                                    (%(coach_age)s year)\n"
+"                                "
+msgid_plural ""
+"\n"
+"                                    (%(coach_age)s years)\n"
+"                                "
+msgstr[0] ""
+"\n"
+"                                    (%(coach_age)s год)\n"
+"                                "
+msgstr[1] ""
+"\n"
+"                                    (%(coach_age)s года)\n"
+"                                "
+msgstr[2] ""
+"\n"
+"                                    (%(coach_age)s лет)\n"
+"                                "
+msgstr[3] ""
+"\n"
+"                                    (%(coach_age)s лет)\n"
+"                                "
 
 #: yoyo/users/apps.py:8
-msgid "YoYo Auth"
-msgstr "YoYo Авторизация"
+msgid "Auth"
+msgstr "Авторизация"
 
 #: yoyo/users/models.py:68
 msgid "E-mail"
 msgstr "Электропочта"
-
-#: yoyo/users/models.py:71
-msgid "First name"
-msgstr "Имя"
-
-#: yoyo/users/models.py:72
-msgid "Last name"
-msgstr "Фамилия"
-
-#: yoyo/users/models.py:73
-msgid "Second name"
-msgstr "Отчество"
 
 #: yoyo/users/models.py:75
 msgid "Joined on"
@@ -52,13 +185,23 @@ msgstr "Присоеденился"
 msgid "Staff status"
 msgstr "Сотрудник"
 
+#: yoyo/users/models.py:86
+msgid "User"
+msgstr "Пользователь"
+
+#: yoyo/users/models.py:87
+msgid "Users"
+msgstr "Пользователи"
+
 #: yoyo/users/validators.py:24
 msgid "This username is not available."
 msgstr "Данный логин не доступен."
 
 #: yoyo/users/validators.py:32
 msgid "Username can only contain latin alphabet letter, digits and low dash."
-msgstr "Логин может содержать только буквы латинского алфавита, цифры и знак подчеркивания."
+msgstr ""
+"Логин может содержать только буквы латинского алфавита, цифры и знак "
+"подчеркивания."
 
 #: yoyo/users/validators.py:39
 #, python-format
