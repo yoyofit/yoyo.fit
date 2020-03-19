@@ -1,5 +1,8 @@
 from django.apps import AppConfig
+from django.utils.translation import ugettext_lazy as _
 
 
-class CoachesConfig(AppConfig):
-    name = 'coaches'
+class YoYoCoachesConfig(AppConfig):
+    name = 'yoyo.coaches'
+    label = 'yoyo_coaches'
+    verbose_name = _('Coaches')
