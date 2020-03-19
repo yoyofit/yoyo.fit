@@ -1,0 +1,84 @@
+{% extends 'yoyo/base.html' %}
+{% load i18n static %}
+
+{% block style %}
+    <link rel="stylesheet" href="{% static 'yoyo/css/main.css' %}">
+{% endblock %}
+
+{% block title %}
+    {% if coaches|length %}
+        {% blocktrans count total=coaches|length %}
+            Search Result &mdash; Found {{ total }} coach.
+        {% plural %}
+            Search Result &mdash; Found {{ total }} coaches.
+        {% endblocktrans %}
+    {% else %}
+        {% trans 'Coach not found' %}
+    {% endif %}
+{% endblock %}
+
+{% block content %}
+    <section class="hero is-danger is-homepage{% if coaches|length == 0 %} is-fullheight{% endif %}">
+        <div class="hero-body">
+            <div class="container{% if coaches|length == 0 %} has-text-centered{% endif %}">
+                {% if coaches|length %}
+                    <h1 class="title">{% trans 'Search Result' %}</h1>
+                    <h2 class="subtitle">
+                        {% blocktrans count total=coaches|length %}
+                            Found {{ total }} coach.
+                        {% plural %}
+                            Found {{ total }} coaches.
+                        {% endblocktrans %}
+                    </h2>
+                {% else %}
+                    <h1 class="title">{% trans 'Coach not found!' %}</h1>
+                    <h2 class="subtitle">
+                        {% trans 'Maybe this coach does not have a professional education?' %}
+                    </h2>
+                    <a href="{% url 'yoyo:index' %}" class="button is-medium is-danger is-outlined is-inverted">
+                        {% trans 'Go to home' %}
+                    </a>
+                {% endif %}
+            </div>
+        </div>
+        {% if coaches|length %}
+            <div class="hero-foot">
+                <div class="tabs is-boxed">
+                    <div class="container">
+                        <ul>
+                            <li><a href="{% url 'yoyo:index' %}">{% trans 'Go to home' %}</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        {% endif %}
+    </section>
+    <section class="section">
+        {% for coach in coaches %}
+            <h1 class="title">{{ coach.city_name }}</h1>
+            <article class="media">
+                <figure class="media-left">
+                    <p class="image is-128x128">
+                        <img src="https://bulma.io/images/placeholders/128x128.png" alt="">
+                    </p>
+                </figure>
+                <div class="media-content">
+                    <div class="content">
+                        <p>
+                            <strong><a href="{% url 'yoyo:detail' coach.pk %}">{{ coach.full_name }}</a></strong>
+                            <small>
+                                {% blocktrans count coach_age=coach.age %}
+                                    ({{ coach_age }} year)
+                                {% plural %}
+                                    ({{ coach_age }} years)
+                                {% endblocktrans %}
+                            </small>
+                            <small>{{ coach.city_name_with_region }}</small>
+                            <br>
+                        </p>
+                    </div>
+                </div>
+            </article>
+        {% endfor %}
+    </section>
+{% endblock %}

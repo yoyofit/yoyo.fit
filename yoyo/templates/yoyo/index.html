@@ -11,15 +11,14 @@
     <section class="hero is-danger is-homepage is-fullheight">
         <div class="hero-body">
             <div class="container">
-                <form method="post">
-                    {% csrf_token %}
+                <form method="get" action="{% url 'yoyo:search' %}">
                     <h1 class="title">База квалифицированных тренеров России</h1>
                     <h2 class="subtitle">Найди своего тренера</h2>
                     <div class="field is-horizontal">
                         <div class="field-body">
                             <div class="field">
                                 <div class="control">
-                                    <input type="text" class="input is-large" autofocus
+                                    <input type="text" name="q" class="input is-large" autofocus
                                            placeholder="Петров Василий Иванович">
                                     <p class="help">Введите инициалы тренера. Можно искать по фамилии, имени и/или отчеству.</p>
                                 </div>
