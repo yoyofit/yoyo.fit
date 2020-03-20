@@ -91,7 +91,7 @@ class Common(Configuration):
 
     DATABASES = {
         'default': {
-            'ENGINE': 'django.contrib.gis.db.backends.postgis',
+            'ENGINE': 'django.db.backends.postgresql_psycopg2',
             'NAME': values.Value('USER', environ_prefix='POSTGRES'),
             'USER': values.Value('USER', environ_prefix='POSTGRES'),
             'PASSWORD': values.Value('PASSWORD', environ_prefix='POSTGRES'),
@@ -162,8 +162,6 @@ class Common(Configuration):
 
 
 class Dev(Common):
-    SPATIALITE_LIBRARY_PATH = '/usr/local/lib/mod_spatialite.dylib'
-
     DATABASES = {
         'default': {
             # 'ENGINE': 'django.db.backends.sqlite3',
@@ -171,3 +169,7 @@ class Dev(Common):
             'NAME': os.path.join(Common.BASE_DIR, 'db.sqlite3')
         }
     }
+
+
+class Prod(Common):
+    pass
