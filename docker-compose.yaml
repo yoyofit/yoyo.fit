@@ -9,7 +9,6 @@ services:
       - '127.0.0.1:${YOYO_PSQL_PORT:-5432}:5432'
   yoyo:
     build: .
-    command: python manage.py runserver 0.0.0.0:8000
     env_file:
       - .env
     ports:
