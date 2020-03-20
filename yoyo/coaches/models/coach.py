@@ -62,6 +62,10 @@ class Coach(models.Model):
         'cities_light.City', on_delete=models.SET_NULL, blank=True, null=True, verbose_name=_('City')
     )
 
+    specializations = models.ManyToManyField(
+        'yoyo_coaches.Specialization', verbose_name=_('Specialization'), blank=True)
+    documents = models.ManyToManyField('yoyo_institutes.Doc', verbose_name=_('Documents'), blank=True)
+
     objects = CoachManager()
 
     class Meta:
