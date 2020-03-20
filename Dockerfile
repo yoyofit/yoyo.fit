@@ -5,7 +5,6 @@ ENV IN_YOYO_DOCKER 1
 
 RUN apt-get update && apt-get install -y \
     libffi-dev \
-    libgdal-dev \
     libssl-dev \
     libjpeg-dev \
     libopenjp2-7-dev \
@@ -15,15 +14,13 @@ RUN apt-get update && apt-get install -y \
     postgresql-client \
     gettext
 
-ENV CPLUS_INCLUDE_PATH=/usr/include/gdal
-ENV C_INCLUDE_PATH=/usr/include/gdal
-
-WORKDIR /srv/yoyo
 
 RUN pip install --upgrade pip && pip install pipenv
 
-COPY Pipfile* /srv/yoyo/
-RUN cd /srv/yoyo && pipenv lock --requirements > requirements.txt
+COPY Pipfile* /
+RUN pipenv lock --requirements > requirements.txt
 RUN pip install -r requirements.txt
+
+WORKDIR /srv/yoyo
 
 EXPOSE 8000
