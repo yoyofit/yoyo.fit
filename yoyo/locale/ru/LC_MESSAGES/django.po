@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-03-18 08:40+0000\n"
+"POT-Creation-Date: 2020-03-19 10:11+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -20,15 +20,20 @@ msgstr ""
 "%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n"
 "%100>=11 && n%100<=14)? 2 : 3);\n"
 
-#: yoyo/coaches/admin.py:13 yoyo/coaches/admin.py:30 yoyo/users/admin.py:13
+#: yoyo/coaches/admin.py:14 yoyo/coaches/admin.py:33 yoyo/users/admin.py:13
 msgid "Full name"
 msgstr "Ф.И.О."
 
-#: yoyo/coaches/admin.py:16
+#: yoyo/coaches/admin.py:17
 msgid "Bio"
 msgstr "Биография"
 
-#: yoyo/coaches/admin.py:23
+#: yoyo/coaches/admin.py:20 yoyo/coaches/models/coach.py:66
+#: yoyo/institutes/models.py:60
+msgid "Documents"
+msgstr "Документы"
+
+#: yoyo/coaches/admin.py:26
 msgid "year"
 msgid_plural "years"
 msgstr[0] "год"
@@ -36,37 +41,113 @@ msgstr[1] "года"
 msgstr[2] "лет"
 msgstr[3] "лет"
 
-#: yoyo/coaches/admin.py:26 yoyo/coaches/models.py:60
+#: yoyo/coaches/admin.py:29 yoyo/coaches/models/coach.py:60
 msgid "Born date"
 msgstr "Дата рождения"
 
-#: yoyo/coaches/apps.py:8 yoyo/coaches/models.py:69
+#: yoyo/coaches/apps.py:8 yoyo/coaches/models/coach.py:72
 msgid "Coaches"
 msgstr "Тренеры"
 
-#: yoyo/coaches/models.py:56 yoyo/users/models.py:71
+#: yoyo/coaches/models/coach.py:56 yoyo/users/models.py:71
 msgid "First name"
 msgstr "Имя"
 
-#: yoyo/coaches/models.py:57 yoyo/users/models.py:72
+#: yoyo/coaches/models/coach.py:57 yoyo/users/models.py:72
 msgid "Last name"
 msgstr "Фамилия"
 
-#: yoyo/coaches/models.py:58 yoyo/users/models.py:73
+#: yoyo/coaches/models/coach.py:58 yoyo/users/models.py:73
 msgid "Second name"
 msgstr "Отчество"
 
-#: yoyo/coaches/models.py:62
+#: yoyo/coaches/models/coach.py:62 yoyo/institutes/models.py:22
 msgid "City"
 msgstr "Город"
 
-#: yoyo/coaches/models.py:68
+#: yoyo/coaches/models/coach.py:65 yoyo/coaches/models/specialization.py:9
+msgid "Specialization"
+msgstr "Специализация"
+
+#: yoyo/coaches/models/coach.py:71
 msgid "Coach"
 msgstr "Тренер"
+
+#: yoyo/coaches/models/specialization.py:6 yoyo/institutes/models.py:19
+msgid "Name"
+msgstr "Название"
+
+#: yoyo/coaches/models/specialization.py:10
+msgid "Specializations"
+msgstr "Специализации"
 
 #: yoyo/core/apps.py:8
 msgid "YoYo Core"
 msgstr "YoYo Ядро"
+
+#: yoyo/institutes/apps.py:8 yoyo/institutes/models.py:28
+msgid "Institutes"
+msgstr "Учебные заведения"
+
+#: yoyo/institutes/models.py:14
+msgid "College/Academy"
+msgstr "Высшее учебное заведение"
+
+#: yoyo/institutes/models.py:15
+msgid "Vocational school"
+msgstr "Профессиональное учебное заведение"
+
+#: yoyo/institutes/models.py:16
+msgid "Courses"
+msgstr "Курсы"
+
+#: yoyo/institutes/models.py:20
+msgid "Logo"
+msgstr "Логотип"
+
+#: yoyo/institutes/models.py:24
+msgid "Type of institution"
+msgstr "Тип учебного заведения"
+
+#: yoyo/institutes/models.py:27 yoyo/institutes/models.py:44
+msgid "Institute"
+msgstr "Учебное заведение"
+
+#: yoyo/institutes/models.py:39
+msgid "Diploma"
+msgstr "Диплом"
+
+#: yoyo/institutes/models.py:40
+msgid "Certificate"
+msgstr "Сертификат"
+
+#: yoyo/institutes/models.py:43
+msgid "Document number"
+msgstr "Номер документа"
+
+#: yoyo/institutes/models.py:45
+msgid "Document type"
+msgstr "Тип документа"
+
+#: yoyo/institutes/models.py:46
+msgid "Document annotate"
+msgstr "Аннотация к документу"
+
+#: yoyo/institutes/models.py:47
+msgid "Date of issue"
+msgstr "Дата выдачи"
+
+#: yoyo/institutes/models.py:48
+msgid "Added at"
+msgstr "Добавлено"
+
+#: yoyo/institutes/models.py:55
+msgid "Added by"
+msgstr "Добавлено"
+
+#: yoyo/institutes/models.py:59
+msgid "Document"
+msgstr "Документ"
 
 #: yoyo/templates/yoyo/search.html:10
 #, python-format
@@ -138,11 +219,11 @@ msgstr "Тренер не найден!"
 msgid "Maybe this coach does not have a professional education?"
 msgstr "Возможно этот тренер не имеет профессионального образования?"
 
-#: yoyo/templates/yoyo/search.html:46
+#: yoyo/templates/yoyo/search.html:39 yoyo/templates/yoyo/search.html:49
 msgid "Go to home"
 msgstr "На главную"
 
-#: yoyo/templates/yoyo/search.html:67
+#: yoyo/templates/yoyo/search.html:70
 #, python-format
 msgid ""
 "\n"
