@@ -91,10 +91,10 @@ class Common(Configuration):
     DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.postgresql_psycopg2',
-            'NAME': values.Value('USER', environ_prefix='POSTGRES'),
-            'USER': values.Value('USER', environ_prefix='POSTGRES'),
-            'PASSWORD': values.Value('PASSWORD', environ_prefix='POSTGRES'),
-            'HOST': values.Value('HOST', environ_prefix='POSTGRES'),
+            'NAME': values.Value(environ_name='USER', environ_prefix='POSTGRES'),
+            'USER': values.Value(environ_name='USER', environ_prefix='POSTGRES'),
+            'PASSWORD': values.Value(environ_name='PASSWORD', environ_prefix='POSTGRES'),
+            'HOST': values.Value(environ_name='HOST', environ_prefix='POSTGRES'),
         }
     }
 
@@ -155,9 +155,6 @@ class Common(Configuration):
     CITIES_LIGHT_INCLUDE_COUNTRIES = ['RU']
     CITIES_LIGHT_INCLUDE_CITY_TYPES = ['PPL', 'PPLA', 'PPLA2', 'PPLA3', 'PPLA4', 'PPLC', 'PPLF', 'PPLG', 'PPLL', 'PPLR',
                                        'PPLS', 'STLMT', ]
-
-    DADATA_KEY = values.Value()
-    DADATA_SECRET = values.Value()
 
 
 class Dev(Common):
