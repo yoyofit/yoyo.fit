@@ -51,6 +51,7 @@ class Common(Configuration):
         'django.contrib.humanize',
         'cities_light',
         'yoyo.core',
+        'yoyo.institutes',
         'yoyo.coaches',
     ]
 
