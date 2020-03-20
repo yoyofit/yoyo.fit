@@ -9,14 +9,11 @@ verify_ssl = true
 django = "*"
 unidecode = "*"
 psycopg2-binary = "*"
-gdal = "==2.4.2"
 django-configurations = "*"
-django-cities = "*"
 six = "*"
 cities-light = {editable = true,git = "https://github.com/arsensokolov/django-cities-light.git",ref = "dj3"}
 requests = "*"
-dadata = {editable = true,git = "https://github.com/tigrus/dadata-python"}
-nameparser = "*"
+pillow = "*"
 
 [requires]
 python_version = "3.7"
