@@ -47,7 +47,6 @@ class Common(Configuration):
         'django.contrib.sessions',
         'django.contrib.messages',
         'django.contrib.staticfiles',
-        'django.contrib.gis',
         'django.contrib.humanize',
         'cities_light',
         'yoyo.core',
@@ -164,8 +163,7 @@ class Common(Configuration):
 class Dev(Common):
     DATABASES = {
         'default': {
-            # 'ENGINE': 'django.db.backends.sqlite3',
-            'ENGINE': 'django.contrib.gis.db.backends.spatialite',
+            'ENGINE': 'django.db.backends.sqlite3',
             'NAME': os.path.join(Common.BASE_DIR, 'db.sqlite3')
         }
     }

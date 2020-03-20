@@ -1,6 +1,5 @@
 from django.shortcuts import redirect
 from django.views.generic import ListView, DetailView
-from dadata.plugins.django import DjangoDaDataClient
 from .models import Coach
 
 

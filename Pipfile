@@ -11,7 +11,7 @@ unidecode = "*"
 psycopg2-binary = "*"
 django-configurations = "*"
 six = "*"
-cities-light = {editable = true,git = "https://github.com/arsensokolov/django-cities-light.git",ref = "dj3"}
+django-cities-light = {editable = true,git = "https://github.com/arsensokolov/django-cities-light.git",ref = "dj3"}
 requests = "*"
 pillow = "*"
 

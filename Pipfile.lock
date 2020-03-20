@@ -1,7 +1,7 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "f57dfe6f60cefa6528cac578aecfdde8110514e564e92101fc32b56d3fc4d75a"
+            "sha256": "1fd627f8b30556051ba1b2006c21a83c9c152f84701fa1727b0a0a9c96aab150"
         },
         "pipfile-spec": 6,
         "requires": {
@@ -37,11 +37,6 @@
             ],
             "version": "==3.0.4"
         },
-        "cities-light": {
-            "editable": true,
-            "git": "https://github.com/arsensokolov/django-cities-light.git",
-            "ref": "e83d7bfe503b15aba69595aaa2869404f2581d10"
-        },
         "django": {
             "hashes": [
                 "sha256:50b781f6cbeb98f673aa76ed8e572a019a45e52bdd4ad09001072dfd91ab07c8",
@@ -56,6 +51,11 @@
                 "sha256:c5a278681bd49bfd1a75f95efa396b99ec81b6eddfc8d45b9231d265d70a3b39"
             ],
             "version": "==1.9.4.dev0"
+        },
+        "django-cities-light": {
+            "editable": true,
+            "git": "https://github.com/arsensokolov/django-cities-light.git",
+            "ref": "e83d7bfe503b15aba69595aaa2869404f2581d10"
         },
         "django-configurations": {
             "hashes": [
@@ -102,10 +102,10 @@
         },
         "progressbar2": {
             "hashes": [
-                "sha256:489cc619276505504cb3e6230e05465480f7b748515a2c1374f82115bcae561c",
-                "sha256:e5dcded3957b40eab6ba23962d25618a7709971b5413078a5905a93e84345e92"
+                "sha256:2c21c14482016162852c8265da03886c2b4dea6f84e5a817ad9b39f6bd82a772",
+                "sha256:7849b84c01a39e4eddd2b369a129fed5e24dfb78d484ae63f9e08e58277a2928"
             ],
-            "version": "==3.50.0"
+            "version": "==3.50.1"
         },
         "psycopg2-binary": {
             "hashes": [
