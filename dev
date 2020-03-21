@@ -4,6 +4,10 @@ RED='\033[0;31m'
 BOLD=$(tput bold)
 NORMAL=$(tput sgr0)
 
+username=${DJANGO_SUPERUSER_NAME}
+email=${DJANGO_SUPERUSER_EMAIL}
+password=${DJANGO_SUPERUSER_PASSWORD}
+
 error() {
   echo -e "${RED}Ошибка:${NORMAL} $1"
 }
@@ -39,18 +43,12 @@ if [[ ! $IN_YOYO_DOCER == 1 ]]; then
 fi
 
 
-intro() {
-  echo 'использование: ./dev [arg] ...'
-  echo 'Аргументы сгруппированы по типу:'
-  echo
-  echo 'Для разработки:'
-  echo
-  echo "    ${BOLD}init${NOMAL}          ининциализая БД для разработчика."
-  echo "    ${BOLD}afterinit${NOMAL}     повторно показать справку после завершения инициализации."
-  echo "    ${BOLD}clear${NOMAL}         очистить медиа, а также удалить Docker контейнеры."
-  echo "    ${BOLD}rebuild${NOMAL}       пересоздать Docker контейнер YoYo."
-  echo "    ${BOLD}reset${NOMAL}         очистить после инициализации."
-  echo
-  echo "    Аргементы init и rebuild могут содержвать любое кол-во дополнительных опций."
-
+init_in_docker() {
+  require_in_docer
+  wait_for_db
+  python manage.py migrate
+  python manage.py collectstatic
+  python manage.py cities_light --progress
+  python manage.py createsuperuser --username $username --email $email --password $password
 }
+
