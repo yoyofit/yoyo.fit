@@ -21,4 +21,10 @@ if [ "$1" == "init" ]; then
   python manage.py createsuperuser --username $DJANGO_SUPERUSER_NAME --email $DJANGO_SUPERUSER_EMAIL --password $DJANGO_SUPERUSER_PASSWORD
 fi
 
+if [ "$1" == "update" ]; then
+  wait_for_db
+  python manage.py migrate
+  python manage.py collectstatic --noinput
+fi
+
 exec "$@"
