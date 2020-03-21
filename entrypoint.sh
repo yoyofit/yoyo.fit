@@ -10,7 +10,7 @@ wait_for_db() {
 }
 
 if [ "$1" == "runserver" ]; then
-  exec gunicorn yoyoproject.wsgi:application --bind "${@:2}" --log-file /var/log/gunicorn.log --log-level debug
+  exec gunicorn yoyoproject.wsgi:application --bind "${@:2}"
 fi
 
 exec "$@"

@@ -32,10 +32,8 @@ COPY Pipfile* /
 RUN pipenv lock --requirements > requirements.txt
 RUN pip install -r requirements.txt
 
-COPY entrypoint.sh /
-
 COPY . /srv/yoyo
 WORKDIR /srv/yoyo
 
-ENTRYPOINT ["/entrypoint.sh"]
+ENTRYPOINT ["./entrypoint.sh"]
 CMD ["runserver", "0.0.0.0:8000"]
