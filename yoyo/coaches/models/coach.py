@@ -1,8 +1,11 @@
+from PIL import Image
 from datetime import date
 from django.db import models
 from django.db.models import Q
 from django.utils.translation import gettext_lazy as _
-
+from django.utils.translation import ngettext
+from django.urls import reverse
+from ..uploader import upload_hero_photo, upload_main_photo
 
 class CoachManager(models.Manager):
     def filter_by_fio(self, fio: list):
@@ -66,6 +69,20 @@ class Coach(models.Model):
         'yoyo_coaches.Specialization', verbose_name=_('Specialization'), blank=True)
     documents = models.ManyToManyField('yoyo_institutes.Doc', verbose_name=_('Documents'), blank=True)
 
+    hero_photo = models.ImageField(
+        _('Big cover photo'),
+        help_text=_('This photo does have a 1080x720px'),
+        upload_to=upload_hero_photo,
+        blank=True,
+        null=True
+    )
+    main_photo = models.ImageField(
+        _('Main photo'),
+        upload_to=upload_main_photo,
+        blank=True,
+        null=True
+    )
+
     objects = CoachManager()
 
     class Meta:
@@ -91,6 +108,10 @@ class Coach(models.Model):
         today = date.today()
         return today.year - self.born.year - ((today.month, today.day) < (self.born.month, self.born.day))
 
+    def get_age_display(self) -> str:
+        text = ngettext('year', 'years', self.age)
+        return '{} {}'.format(self.age, text)
+
     @property
     def city_name(self) -> str:
         return self.city.alternate_names.split(';')[-1]
@@ -102,3 +123,25 @@ class Coach(models.Model):
         if city_name != region_name:
             return f'г. {city_name}, {region_name}'
         return f'г. {city_name}'
+
+    def get_absolute_url(self) -> str:
+        return reverse('yoyo:detail', kwargs={'pk': self.pk})
+
+    def save(self, *args, **kwargs):
+        super().save(*args, **kwargs)
+
+        if self.hero_photo:
+            img = Image.open(self.hero_photo.path)
+
+            if img.width > 1080 or img.height > 720:
+                new_image = (1080, 720)
+                img.thumbnail(new_image)
+                img.save(self.hero_photo.path)
+
+        if self.main_photo:
+            img = Image.open(self.main_photo.path)
+
+            if img.width > 128 or img.height > 128:
+                new_image = (128, 128)
+                img.thumbnail(new_image)
+                img.save(self.main_photo.path)

@@ -1,6 +1,7 @@
 from django.shortcuts import redirect
 from django.views.generic import ListView, DetailView
 from .models import Coach
+from .utils import generate_qr_code
 
 
 class SearchView(ListView):
@@ -69,3 +70,16 @@ class CoachDetail(DetailView):
     model = Coach
     context_object_name = 'coach'
     template_name = 'yoyo/detail.html'
+
+    def get_context_data(self, **kwargs):
+        context = {}
+        if self.object:
+            context['object'] = self.object
+            context_object_name = self.get_context_object_name(self.object)
+            if context_object_name:
+                context[context_object_name] = self.object
+            context.update({
+                'qr_code': generate_qr_code(self.object, self.request)
+            })
+        context.update(kwargs)
+        return super().get_context_data(**context)

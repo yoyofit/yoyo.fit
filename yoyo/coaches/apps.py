@@ -6,3 +6,6 @@ class YoYoCoachesConfig(AppConfig):
     name = 'yoyo.coaches'
     label = 'yoyo_coaches'
     verbose_name = _('Coaches')
+
+    def ready(self):
+        import yoyo.coaches.signals
