@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-03-19 10:11+0000\n"
+"POT-Creation-Date: 2020-03-21 12:10+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -28,12 +28,12 @@ msgstr "Ф.И.О."
 msgid "Bio"
 msgstr "Биография"
 
-#: yoyo/coaches/admin.py:20 yoyo/coaches/models/coach.py:66
+#: yoyo/coaches/admin.py:20 yoyo/coaches/models/coach.py:69
 #: yoyo/institutes/models.py:60
 msgid "Documents"
 msgstr "Документы"
 
-#: yoyo/coaches/admin.py:26
+#: yoyo/coaches/admin.py:26 yoyo/coaches/models/coach.py:97
 msgid "year"
 msgid_plural "years"
 msgstr[0] "год"
@@ -41,35 +41,36 @@ msgstr[1] "года"
 msgstr[2] "лет"
 msgstr[3] "лет"
 
-#: yoyo/coaches/admin.py:29 yoyo/coaches/models/coach.py:60
+#: yoyo/coaches/admin.py:29 yoyo/coaches/models/coach.py:62
 msgid "Born date"
 msgstr "Дата рождения"
 
-#: yoyo/coaches/apps.py:8 yoyo/coaches/models/coach.py:72
+#: yoyo/coaches/apps.py:8 yoyo/coaches/models/coach.py:75
 msgid "Coaches"
 msgstr "Тренеры"
 
-#: yoyo/coaches/models/coach.py:56 yoyo/users/models.py:71
+#: yoyo/coaches/models/coach.py:58 yoyo/users/models.py:71
 msgid "First name"
 msgstr "Имя"
 
-#: yoyo/coaches/models/coach.py:57 yoyo/users/models.py:72
+#: yoyo/coaches/models/coach.py:59 yoyo/users/models.py:72
 msgid "Last name"
 msgstr "Фамилия"
 
-#: yoyo/coaches/models/coach.py:58 yoyo/users/models.py:73
+#: yoyo/coaches/models/coach.py:60 yoyo/users/models.py:73
 msgid "Second name"
 msgstr "Отчество"
 
-#: yoyo/coaches/models/coach.py:62 yoyo/institutes/models.py:22
+#: yoyo/coaches/models/coach.py:64 yoyo/institutes/models.py:22
 msgid "City"
 msgstr "Город"
 
-#: yoyo/coaches/models/coach.py:65 yoyo/coaches/models/specialization.py:9
+#: yoyo/coaches/models/coach.py:68 yoyo/coaches/models/specialization.py:9
+#: yoyo/templates/yoyo/detail.html:42
 msgid "Specialization"
 msgstr "Специализация"
 
-#: yoyo/coaches/models/coach.py:71
+#: yoyo/coaches/models/coach.py:74
 msgid "Coach"
 msgstr "Тренер"
 
@@ -149,6 +150,15 @@ msgstr "Добавлено"
 msgid "Document"
 msgstr "Документ"
 
+#: yoyo/templates/yoyo/detail.html:16 yoyo/templates/yoyo/search.html:43
+#: yoyo/templates/yoyo/search.html:53
+msgid "Go to home"
+msgstr "На главную"
+
+#: yoyo/templates/yoyo/detail.html:49
+msgid "Education"
+msgstr "Образование"
+
 #: yoyo/templates/yoyo/search.html:10
 #, python-format
 msgid ""
@@ -216,14 +226,14 @@ msgid "Coach not found!"
 msgstr "Тренер не найден!"
 
 #: yoyo/templates/yoyo/search.html:36
-msgid "Maybe this coach does not have a professional education?"
-msgstr "Возможно этот тренер не имеет профессионального образования?"
+msgid "Perhaps the coach has not been added to our database yet ..."
+msgstr "Возможно тренер ещё не был добавлен в нашу базу..."
 
-#: yoyo/templates/yoyo/search.html:39 yoyo/templates/yoyo/search.html:49
-msgid "Go to home"
-msgstr "На главную"
+#: yoyo/templates/yoyo/search.html:39
+msgid "If you are a coach and did not find yourself, write to us:"
+msgstr "Если вы тренер и не нашли себя, напишите нам:"
 
-#: yoyo/templates/yoyo/search.html:70
+#: yoyo/templates/yoyo/search.html:74
 #, python-format
 msgid ""
 "\n"
@@ -301,3 +311,6 @@ msgstr[1] "Логин не может быть больше %(limit_value)s си
 #: yoyo/users/validators.py:64
 msgid "This e-mail address is not available."
 msgstr "Данная электропочта не доступна."
+
+#~ msgid "Maybe this coach does not have a professional education?"
+#~ msgstr "Возможно этот тренер не имеет профессионального образования?"
