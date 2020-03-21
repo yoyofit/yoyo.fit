@@ -13,3 +13,8 @@
 .is-homepage .input {
     background: rgba(255, 255, 255, 0.75);
 }
+
+.hero .qr-code {
+    background-color: white;
+    border-radius: 12px;
+}
