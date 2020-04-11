@@ -6,7 +6,7 @@ from .utils import generate_qr_code
 
 class SearchView(ListView):
     model = Coach
-    paginate_by = 10
+    paginate_by = 1
     context_object_name = 'coaches'
     template_name = 'yoyo/search.html'
     allow_empty = False
