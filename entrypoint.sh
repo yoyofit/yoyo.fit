@@ -11,20 +11,16 @@ wait_for_db() {
 
 if [ "$1" == "runserver" ]; then
   exec gunicorn yoyoproject.wsgi:application --bind "${@:2}"
-fi
-
-if [ "$1" == "init" ]; then
+elif [  "$1" == "init" ]; then
   wait_for_db
   python manage.py migrate
   python manage.py collectstatic
   python manage.py cities_light --progress
   python manage.py createsuperuser --username $DJANGO_SUPERUSER_NAME --email $DJANGO_SUPERUSER_EMAIL --password $DJANGO_SUPERUSER_PASSWORD
-fi
-
-if [ "$1" == "update" ]; then
+elif [ "$1" == "update" ]; then
   wait_for_db
   python manage.py migrate
   python manage.py collectstatic --noinput
+else
+  exec "$@"
 fi
-
-exec "$@"
