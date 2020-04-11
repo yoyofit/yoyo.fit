@@ -1,19 +1,52 @@
 {% extends 'yoyo/base.html' %}
 {% load static i18n %}
 
-{% block style %}
-    <link rel="stylesheet" href="{% static 'yoyo/css/main.css' %}">
-{% endblock %}
-
 {% block title %}{{ coach.full_name }}{% endblock %}
 
 {% block content %}
-    <section class="hero is-danger is-homepage is-fullheight">
-        <div class="hero-body">
-            <div class="container has-text-centered">
-                <h1 class="title">{{ coach.full_name }}</h1>
-                <h2 class="subtitle">{{ coach.city_name_with_region }}</h2>
+    <div class="uk-section uk-flex uk-flex-center uk-flex-middle uk-height-viewport{% if coach.hero_photo %} uk-background-cover{% else %} uk-background-primary{% endif %}"
+         {% if coach.hero_photo %}data-src="{{ coach.hero_photo.url }}" uk-img{% endif %}>
+        <div class="uk-container uk-text-center">
+            <div class="uk-card uk-card-default">
+                <div class="uk-card-header">
+                    <h3 class="uk-card-title uk-margin-remove-bottom">
+                        {{ coach.full_name }}
+                    </h3>
+                    <p class="uk-text-muted uk-margin-remove">{{ coach.city_name_with_region }}</p>
+                    <p class="uk-margin-remove-top">
+                        <span class="uk-label uk-label-danger">{{ coach.get_age_display }}</span>
+                    </p>
+                </div>
+                <div class="uk-card-body">
+                    <dl class="uk-description-list uk-description-list-divider">
+                        <dt>Образование:</dt>
+                        <dd>
+                            {% for doc in coach.documents.all %}
+                                <span class="uk-label uk-text-truncate">{{ doc.institute }}</span>
+                            {% endfor %}
+                        </dd>
+                        <dt>Специализация:</dt>
+                        <dd>
+                            {% for specialization in coach.specializations.all %}
+                                <span class="uk-label uk-text-truncate">{{ specialization.name }}</span>
+                            {% endfor %}
+                        </dd>
+                    </dl>
+                </div>
+                <div class="uk-card-footer">
+                    <a href="#modal-qr-code" class="uk-button uk-button-text" uk-toggle>QR код-ссылка</a>
+                </div>
+            </div>
+            <div class="uk-margin">
+                <a href="{% url 'yoyo:index' %}" class="uk-button uk-button-secondary uk-width-1-1">&larr; На
+                    главную</a>
             </div>
         </div>
-    </section>
+    </div>
+    <div id="modal-qr-code" class="uk-flex-top" uk-modal>
+        <div class="uk-modal-dialog uk-width-auto uk-margin-auto-vertical">
+            <button class="uk-modal-close-outside" type="button" uk-close></button>
+            <img src="{{ qr_code }}" alt="" width="400">
+        </div>
+    </div>
 {% endblock %}

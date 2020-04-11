@@ -1,37 +1,33 @@
 {% extends 'yoyo/base.html' %}
 {% load static %}
 
-{% block style %}
-    <link rel="stylesheet" href="{% static 'yoyo/css/main.css' %}">
-{% endblock %}
-
 {% block title %}Найди своего тренера — База всех квалифицированных тренеров России{% endblock %}
 
 {% block content %}
-    <section class="hero is-danger is-homepage is-fullheight">
-        <div class="hero-body">
-            <div class="container">
-                <form method="get" action="{% url 'yoyo:search' %}">
-                    <h1 class="title">База квалифицированных тренеров России</h1>
-                    <h2 class="subtitle">Найди своего тренера</h2>
-                    <div class="field is-horizontal">
-                        <div class="field-body">
-                            <div class="field">
-                                <div class="control">
-                                    <input type="text" name="q" class="input is-large" autofocus
-                                           placeholder="Петров Василий Иванович">
-                                    <p class="help">Введите инициалы тренера. Можно искать по фамилии, имени и/или отчеству.</p>
-                                </div>
-                            </div>
-                            <div class="field">
-                                <div class="control">
-                                    <button class="button is-light is-large">Найти</button>
-                                </div>
-                            </div>
+    <div class="uk-section uk-section-primary uk-flex uk-flex-center uk-flex-middle uk-height-viewport">
+        <div class="container uk-text-center">
+            <h1>База квалифицированных тренеров России</h1>
+            <form action="{% url 'yoyo:search' %}">
+                <label for="id_q" class="uk-form-label uk-text-lead">Найди своего тренера</label>
+                <div class="uk-margin">
+                    <div class="uk-grid uk-grid-small">
+                        <div class="uk-width-expand uk-first-column">
+                            <input type="search" name="q" id="id_q" class="uk-input uk-form-large" autofocus required>
+                        </div>
+                        <div class="uk-width-auto">
+                            <button type="submit" class="uk-button uk-button-default uk-form-large uk-width-1-1">
+                                Найти &rarr;
+                            </button>
                         </div>
                     </div>
-                </form>
-            </div>
+                </div>
+                <p class="uk-text-small uk-text-left">Введите инициалы тренера. Можно искать по фамилии, имени и/или
+                    отчеству.</p>
+            </form>
         </div>
-    </section>
+        <div class="uk-position-bottom uk-overlay uk-overlay-primary uk-animation-fade">
+            <strong>Внимание!</strong> Наша база находится на стадии наполнения.
+            Если вы хотите помочь в наполении напишите нам: <a href="mailto:support@yoyo.fit">support@yoyo.fit</a>
+        </div>
+    </div>
 {% endblock %}

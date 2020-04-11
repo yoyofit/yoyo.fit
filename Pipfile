@@ -14,6 +14,7 @@ six = "*"
 django-cities-light = {editable = true,git = "https://github.com/arsensokolov/django-cities-light.git",ref = "dj3"}
 requests = "*"
 pillow = "*"
+pyqrcode = "*"
 
 [requires]
 python_version = "3.7"

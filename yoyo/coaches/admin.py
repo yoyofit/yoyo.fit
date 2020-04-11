@@ -2,6 +2,7 @@ from django.contrib import admin
 from django.utils.translation import gettext_lazy as _
 from django.utils.translation import ngettext
 from .models import Coach, Specialization
+from .forms import CoachAdminForm
 
 
 @admin.register(Coach)
@@ -15,12 +16,13 @@ class CoachAdmin(admin.ModelAdmin):
             'fields': ('last_name', 'first_name', 'second_name'),
         }),
         (_('Bio'), {
-            'fields': ('born', 'city', 'specializations'),
+            'fields': ('born', 'city', 'specializations', 'hero_photo', 'main_photo'),
         }),
         (_('Documents'), {
             'fields': ('documents',),
         })
     )
+    form = CoachAdminForm
 
     def get_bord_with_age(self, obj: Coach):
         age_label = ngettext('year', 'years', obj.age)

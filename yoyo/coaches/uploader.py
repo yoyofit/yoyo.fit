@@ -1,11 +1,13 @@
-from datetime import date
-from django.utils.crypto import get_random_string
-from unidecode import unidecode
-from yoyo.coaches.models import Coach
+from ..core.utils import slugify
 
 
-def upload_main_photo(instance: Coach, filename: str) -> str:
-    today = date.today()
-    new_filename = '{}_{}-{}_{}_{}'.format(today.year, today.month, new)
+def upload_hero_photo(instance, filename: str) -> str:
+    new_filename = slugify(instance.full_name)
     file_ext = filename.split('.')[-1]
-    return f'coach/main/{new_filename}.{file_ext}'
+    return f'coaches/hero/{new_filename}.{file_ext}'
+
+
+def upload_main_photo(instance, filename: str) -> str:
+    new_filename = slugify(instance.full_name)
+    file_ext = filename.split('.')[-1]
+    return f'coaches/main/{new_filename}.{file_ext}'

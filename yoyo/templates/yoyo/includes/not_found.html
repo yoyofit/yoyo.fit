@@ -1,0 +1,21 @@
+<div class="uk-section uk-section-secondary uk-flex uk-flex-center uk-flex-middle uk-height-viewport">
+    <div class="container uk-text-center">
+        <h1>Не найден ни один тренер&hellip;</h1>
+        <p class="uk-text-lead">Возможно мы ещё не успели внести данного тренера в базу.</p>
+        <hr class="uk-divider-small">
+        <p>Если это вы, напишите нам: <a href="mailto:support@yoyo.fit">support@yoyo.fit</a></p>
+        <a href="{% url 'yoyo:index' %}"
+           class="uk-button uk-button-default"
+           data-uk-tooltip="title: [Enter] чтобы вернуться; pos: bottom">
+            &larr; На главную
+        </a>
+    </div>
+</div>
+
+<script>
+    document.addEventListener('keypress', function (e) {
+        if (e.key === 'Enter') {
+            window.location.href = '{% url "yoyo:index" %}';
+        }
+    });
+</script>
