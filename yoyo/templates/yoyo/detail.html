@@ -1,56 +1,80 @@
 {% extends 'yoyo/base.html' %}
 {% load static i18n %}
 
-{% block style %}
-    <link rel="stylesheet" href="{% static 'yoyo/css/main.css' %}">
-{% endblock %}
-
 {% block title %}{{ coach.full_name }}{% endblock %}
 
 {% block content %}
-    <section class="hero is-danger is-homepage is-fullheight"{% if coach.hero_photo %} style="background-image: url({{ coach.hero_photo.url }});"{% endif %}>
-        <div class="hero-body">
-            <div class="container">
-                <div class="box">
-                    <article class="media">
-                        <div class="media-left">
-                            <figure class="image is-64x64">
-                                <img src="{{ qr_code }}" alt="{{ coach.full_name }}">
-                            </figure>
-                        </div>
-                        <div class="media-content">
-                            <div class="content">
-                                <p>
-                                    <strong>{{ coach.full_name }}</strong>
-                                    <small>
-                                        <span class="tag is-warning is-rounded">
-                                        {{ coach.get_age_display }}
-                                        </span>
-                                    </small>
-                                    <small>{{ coach.city_name_with_region }}</small>
-                                    {% if coach.specializations.count %}
-                                        <br>
-                                        {% trans 'Specialization' %}:
-                                        {% for specialization in coach.specializations.all %}
-                                            <span class="tag is-dark">{{ specialization.name }}</span>
-                                        {% endfor %}
-                                    {% endif %}
-                                    {% if coach.documents.count %}
-                                        <br>
-                                        {% trans 'Education' %}:
-                                        {% for doc in coach.documents.all %}
-                                            <span class="tag is-link">{{ doc.institute }}</span>
-                                        {% endfor %}
-                                    {% endif %}
-                                </p>
-                            </div>
-                        </div>
-                    </article>
-                </div>
-                <a href="{% url 'yoyo:index' %}" class="button is-link">&larr; {% trans 'Go to home' %}</a>
-                {#                <h1 class="title">{{ coach.full_name }}</h1>#}
-                {#                <h2 class="subtitle">{{ coach.city_name_with_region }}</h2>#}
+    <div class="uk-section uk-flex uk-flex-center uk-flex-middle uk-height-viewport{% if coach.hero_photo %} uk-background-cover{% else %} uk-background-primary{% endif %}"
+         {% if coach.hero_photo %}data-src="{{ coach.hero_photo.url }}" uk-img{% endif %}>
+        <div class="uk-container uk-text-center">
+            <div class="uk-card uk-card-default uk-card-large uk-card-body">
+                <div class="uk-card-badge uk-label uk-label-danger">{{ coach.get_age_display }}</div>
+                <h3 class="uk-card-title">
+                    {{ coach.full_name }}
+                </h3>
+                <dl class="uk-description-list uk-description-list-divider">
+                    <dt>Образование:</dt>
+                    <dd>
+                        {% for doc in coach.documents.all %}
+                            <span class="uk-label uk-text-truncate">{{ doc.institute }}</span>
+                        {% endfor %}
+                    </dd>
+                    <dt>Специализация:</dt>
+                    <dd>
+                        {% for specialization in coach.specializations.all %}
+                            <span class="uk-label uk-text-truncate">{{ specialization.name }}</span>
+                        {% endfor %}
+                    </dd>
+                </dl>
+            </div>
+            <div class="uk-margin">
+                <a href="{% url 'yoyo:index' %}" class="uk-button uk-button-secondary uk-width-1-1">&larr; На главную</a>
             </div>
         </div>
-    </section>
+    </div>
+    {#    <section class="hero is-danger is-homepage is-fullheight"{% if coach.hero_photo %} style="background-image: url({{ coach.hero_photo.url }});"{% endif %}>#}
+    {#        <div class="hero-body">#}
+    {#            <div class="container">#}
+    {#                <div class="box">#}
+    {#                    <article class="media">#}
+    {#                        <div class="media-left">#}
+    {#                            <figure class="image is-64x64">#}
+    {#                                <img src="{{ qr_code }}" alt="{{ coach.full_name }}">#}
+    {#                            </figure>#}
+    {#                        </div>#}
+    {#                        <div class="media-content">#}
+    {#                            <div class="content">#}
+    {#                                <p>#}
+    {#                                    <strong>{{ coach.full_name }}</strong>#}
+    {#                                    <small>#}
+    {#                                        <span class="tag is-warning is-rounded">#}
+    {#                                        {{ coach.get_age_display }}#}
+    {#                                        </span>#}
+    {#                                    </small>#}
+    {#                                    <small>{{ coach.city_name_with_region }}</small>#}
+    {#                                    {% if coach.specializations.count %}#}
+    {#                                        <br>#}
+    {#                                        {% trans 'Specialization' %}:#}
+    {#                                        {% for specialization in coach.specializations.all %}#}
+    {#                                            <span class="tag is-dark">{{ specialization.name }}</span>#}
+    {#                                        {% endfor %}#}
+    {#                                    {% endif %}#}
+    {#                                    {% if coach.documents.count %}#}
+    {#                                        <br>#}
+    {#                                        {% trans 'Education' %}:#}
+    {#                                        {% for doc in coach.documents.all %}#}
+    {#                                            <span class="tag is-link">{{ doc.institute }}</span>#}
+    {#                                        {% endfor %}#}
+    {#                                    {% endif %}#}
+    {#                                </p>#}
+    {#                            </div>#}
+    {#                        </div>#}
+    {#                    </article>#}
+    {#                </div>#}
+    {#                <a href="{% url 'yoyo:index' %}" class="button is-link">&larr; {% trans 'Go to home' %}</a>#}
+    {#                <h1 class="title">{{ coach.full_name }}</h1>#}
+    {#                <h2 class="subtitle">{{ coach.city_name_with_region }}</h2>#}
+    {#            </div>#}
+    {#        </div>#}
+    {#    </section>#}
 {% endblock %}
