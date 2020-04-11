@@ -1,3 +1,2 @@
 User-agent: *
 Disallow: {% url 'yoyo:index' %}api/
-Disallow: {% url 'yoyo:search' %}
