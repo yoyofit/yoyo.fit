@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-03-21 12:10+0000\n"
+"POT-Creation-Date: 2020-04-11 09:41+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -20,20 +20,20 @@ msgstr ""
 "%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n"
 "%100>=11 && n%100<=14)? 2 : 3);\n"
 
-#: yoyo/coaches/admin.py:14 yoyo/coaches/admin.py:33 yoyo/users/admin.py:13
+#: yoyo/coaches/admin.py:15 yoyo/coaches/admin.py:35 yoyo/users/admin.py:13
 msgid "Full name"
 msgstr "Ф.И.О."
 
-#: yoyo/coaches/admin.py:17
+#: yoyo/coaches/admin.py:18
 msgid "Bio"
 msgstr "Биография"
 
-#: yoyo/coaches/admin.py:20 yoyo/coaches/models/coach.py:69
+#: yoyo/coaches/admin.py:21 yoyo/coaches/models/coach.py:70
 #: yoyo/institutes/models.py:60
 msgid "Documents"
 msgstr "Документы"
 
-#: yoyo/coaches/admin.py:26 yoyo/coaches/models/coach.py:97
+#: yoyo/coaches/admin.py:28 yoyo/coaches/models/coach.py:112
 msgid "year"
 msgid_plural "years"
 msgstr[0] "год"
@@ -41,36 +41,48 @@ msgstr[1] "года"
 msgstr[2] "лет"
 msgstr[3] "лет"
 
-#: yoyo/coaches/admin.py:29 yoyo/coaches/models/coach.py:62
+#: yoyo/coaches/admin.py:31 yoyo/coaches/models/coach.py:63
 msgid "Born date"
 msgstr "Дата рождения"
 
-#: yoyo/coaches/apps.py:8 yoyo/coaches/models/coach.py:75
+#: yoyo/coaches/apps.py:8 yoyo/coaches/models/coach.py:90
 msgid "Coaches"
 msgstr "Тренеры"
 
-#: yoyo/coaches/models/coach.py:58 yoyo/users/models.py:71
+#: yoyo/coaches/models/coach.py:59 yoyo/users/models.py:71
 msgid "First name"
 msgstr "Имя"
 
-#: yoyo/coaches/models/coach.py:59 yoyo/users/models.py:72
+#: yoyo/coaches/models/coach.py:60 yoyo/users/models.py:72
 msgid "Last name"
 msgstr "Фамилия"
 
-#: yoyo/coaches/models/coach.py:60 yoyo/users/models.py:73
+#: yoyo/coaches/models/coach.py:61 yoyo/users/models.py:73
 msgid "Second name"
 msgstr "Отчество"
 
-#: yoyo/coaches/models/coach.py:64 yoyo/institutes/models.py:22
+#: yoyo/coaches/models/coach.py:65 yoyo/institutes/models.py:22
 msgid "City"
 msgstr "Город"
 
-#: yoyo/coaches/models/coach.py:68 yoyo/coaches/models/specialization.py:9
-#: yoyo/templates/yoyo/detail.html:42
+#: yoyo/coaches/models/coach.py:69 yoyo/coaches/models/specialization.py:9
+#: yoyo/templates/yoyo/detail.html:33
 msgid "Specialization"
 msgstr "Специализация"
 
+#: yoyo/coaches/models/coach.py:73
+msgid "Big cover photo"
+msgstr ""
+
 #: yoyo/coaches/models/coach.py:74
+msgid "This photo does have a 1080x720px"
+msgstr ""
+
+#: yoyo/coaches/models/coach.py:80
+msgid "Main photo"
+msgstr ""
+
+#: yoyo/coaches/models/coach.py:89
 msgid "Coach"
 msgstr "Тренер"
 
@@ -150,16 +162,24 @@ msgstr "Добавлено"
 msgid "Document"
 msgstr "Документ"
 
-#: yoyo/templates/yoyo/detail.html:16 yoyo/templates/yoyo/search.html:43
-#: yoyo/templates/yoyo/search.html:53
-msgid "Go to home"
-msgstr "На главную"
-
-#: yoyo/templates/yoyo/detail.html:49
+#: yoyo/templates/yoyo/detail.html:40
 msgid "Education"
 msgstr "Образование"
 
-#: yoyo/templates/yoyo/search.html:10
+#: yoyo/templates/yoyo/detail.html:50
+msgid "Go to home"
+msgstr "На главную"
+
+#: yoyo/templates/yoyo/includes/search_result.html:6
+#, python-format
+msgid "Found %(total)s coach"
+msgid_plural "Found %(total)s coaches"
+msgstr[0] "Найден %(total)s тренер"
+msgstr[1] "Найдено %(total)s тренера"
+msgstr[2] "Найдено %(total)s тренеров"
+msgstr[3] "Найдено %(total)s тренеров"
+
+#: yoyo/templates/yoyo/search.html:6
 #, python-format
 msgid ""
 "\n"
@@ -186,79 +206,9 @@ msgstr[3] ""
 "        Результаты поиска &mdash; Найдено %(total)s тренеров.\n"
 "    "
 
-#: yoyo/templates/yoyo/search.html:16
+#: yoyo/templates/yoyo/search.html:12
 msgid "Coach not found"
 msgstr "Тренер не найден"
-
-#: yoyo/templates/yoyo/search.html:25
-msgid "Search Result"
-msgstr "Результаты поиска"
-
-#: yoyo/templates/yoyo/search.html:27
-#, python-format
-msgid ""
-"\n"
-"                            Found %(total)s coach.\n"
-"                        "
-msgid_plural ""
-"\n"
-"                            Found %(total)s coaches.\n"
-"                        "
-msgstr[0] ""
-"\n"
-"                        Найден %(total)s тренер.\n"
-"    "
-msgstr[1] ""
-"\n"
-"                        Найдено %(total)s тренера.\n"
-"    "
-msgstr[2] ""
-"\n"
-"                        Найдено %(total)s тренеров.\n"
-"    "
-msgstr[3] ""
-"\n"
-"                        Найдено %(total)s тренеров.\n"
-"    "
-
-#: yoyo/templates/yoyo/search.html:34
-msgid "Coach not found!"
-msgstr "Тренер не найден!"
-
-#: yoyo/templates/yoyo/search.html:36
-msgid "Perhaps the coach has not been added to our database yet ..."
-msgstr "Возможно тренер ещё не был добавлен в нашу базу..."
-
-#: yoyo/templates/yoyo/search.html:39
-msgid "If you are a coach and did not find yourself, write to us:"
-msgstr "Если вы тренер и не нашли себя, напишите нам:"
-
-#: yoyo/templates/yoyo/search.html:74
-#, python-format
-msgid ""
-"\n"
-"                                    (%(coach_age)s year)\n"
-"                                "
-msgid_plural ""
-"\n"
-"                                    (%(coach_age)s years)\n"
-"                                "
-msgstr[0] ""
-"\n"
-"                                    (%(coach_age)s год)\n"
-"                                "
-msgstr[1] ""
-"\n"
-"                                    (%(coach_age)s года)\n"
-"                                "
-msgstr[2] ""
-"\n"
-"                                    (%(coach_age)s лет)\n"
-"                                "
-msgstr[3] ""
-"\n"
-"                                    (%(coach_age)s лет)\n"
-"                                "
 
 #: yoyo/users/apps.py:8
 msgid "Auth"
@@ -311,6 +261,70 @@ msgstr[1] "Логин не может быть больше %(limit_value)s си
 #: yoyo/users/validators.py:64
 msgid "This e-mail address is not available."
 msgstr "Данная электропочта не доступна."
+
+#~ msgid "Search Result"
+#~ msgstr "Результаты поиска"
+
+#, python-format
+#~ msgid ""
+#~ "\n"
+#~ "                            Found %(total)s coach.\n"
+#~ "                        "
+#~ msgid_plural ""
+#~ "\n"
+#~ "                            Found %(total)s coaches.\n"
+#~ "                        "
+#~ msgstr[0] ""
+#~ "\n"
+#~ "                        Найден %(total)s тренер.\n"
+#~ "    "
+#~ msgstr[1] ""
+#~ "\n"
+#~ "                        Найдено %(total)s тренера.\n"
+#~ "    "
+#~ msgstr[2] ""
+#~ "\n"
+#~ "                        Найдено %(total)s тренеров.\n"
+#~ "    "
+#~ msgstr[3] ""
+#~ "\n"
+#~ "                        Найдено %(total)s тренеров.\n"
+#~ "    "
+
+#~ msgid "Coach not found!"
+#~ msgstr "Тренер не найден!"
+
+#~ msgid "Perhaps the coach has not been added to our database yet ..."
+#~ msgstr "Возможно тренер ещё не был добавлен в нашу базу..."
+
+#~ msgid "If you are a coach and did not find yourself, write to us:"
+#~ msgstr "Если вы тренер и не нашли себя, напишите нам:"
+
+#, python-format
+#~ msgid ""
+#~ "\n"
+#~ "                                    (%(coach_age)s year)\n"
+#~ "                                "
+#~ msgid_plural ""
+#~ "\n"
+#~ "                                    (%(coach_age)s years)\n"
+#~ "                                "
+#~ msgstr[0] ""
+#~ "\n"
+#~ "                                    (%(coach_age)s год)\n"
+#~ "                                "
+#~ msgstr[1] ""
+#~ "\n"
+#~ "                                    (%(coach_age)s года)\n"
+#~ "                                "
+#~ msgstr[2] ""
+#~ "\n"
+#~ "                                    (%(coach_age)s лет)\n"
+#~ "                                "
+#~ msgstr[3] ""
+#~ "\n"
+#~ "                                    (%(coach_age)s лет)\n"
+#~ "                                "
 
 #~ msgid "Maybe this coach does not have a professional education?"
 #~ msgstr "Возможно этот тренер не имеет профессионального образования?"
