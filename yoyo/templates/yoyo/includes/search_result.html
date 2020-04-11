@@ -1,0 +1,99 @@
+{% load i18n %}
+
+<div class="uk-section-primary">
+    <nav class="uk-navbar-container uk-navbar-transparent uk-margin" uk-navbar>
+        <div class="nav-overlay uk-navbar-left">
+            <div class="uk-navbar-item">
+                <a href="{% url 'yoyo:index' %}" class="uk-icon-button uk-icon" uk-icon="home"></a>
+            </div>
+        </div>
+        <div class="nav-overlay uk-navbar-center">
+            <ul class="uk-navbar-nav">
+                <div class="uk-navbar-item uk-logo uk-text-uppercase">
+                    {% blocktrans count total=page_obj.paginator.count %}Found {{ total }} coach{% plural %}Found {{ total }} coaches{% endblocktrans %}
+                </div>
+                <li>
+                    <div class="uk-navbar-dropdown">
+                            <strong>Внимание!</strong> База на стадии наполнения. Если хотите помочь, напишите нам:
+                            <a href="mailto:support@yoyo.fit">support@yoyo.fit</a>
+                    </div>
+                </li>
+            </ul>
+        </div>
+        <div class="nav-overlay uk-navbar-right">
+            <div class="uk-navbar-item">
+                <a href="#" class="uk-icon-button" uk-icon="search" uk-toggle="target: .nav-overlay; animation: uk-animation-fade"></a>
+            </div>
+        </div>
+        <div class="nav-overlay uk-navbar-left uk-flex-1" hidden>
+            <div class="uk-navbar-item uk-width-expand">
+                <form action="{% url 'yoyo:search' %}" class="uk-search uk-search-navbar uk-width-1-1">
+                    <input type="search" class="uk-search-input" name="q" placeholder="Вы искали: {{ request.GET.q }}"
+                           autofocus required>
+                </form>
+            </div>
+            <a class="uk-navbar-toggle" uk-close uk-toggle="target: .nav-overlay; animation: uk-animation-fade"
+               href="#"></a>
+        </div>
+    </nav>
+</div>
+
+<div class="uk-section uk-section-xsmall">
+    <div class="uk-container">
+        {% for coach in coaches %}
+            <a href="{% url 'yoyo:detail' pk=coach.pk %}"
+               class="uk-card uk-card-default uk-grid-collapse uk-child-width-1-2@s uk-margin uk-link-toggle"
+               data-uk-grid>
+                <div class="uk-card-media-left uk-cover-container">
+                    {% if coach.main_photo %}
+                        <img src="{{ coach.main_photo.url }}" alt="{{ coach.full_name }}" data-uk-cover>
+                        <canvas width="600" height="400"></canvas>
+                    {% else %}
+                        <canvas width="600" height="400" class="uk-background-muted"></canvas>
+                        <div class="uk-overlay uk-position-center uk-text-center">
+                            Здесь может быть красивое фото тернера! <br>
+                            Но его пока нет, очень жалко&hellip; <br>
+                        </div>
+                    {% endif %}
+                </div>
+                <div>
+                    <div class="uk-card-body">
+                        <div class="uk-card-badge uk-label uk-label-danger">{{ coach.get_age_display }}</div>
+                        <h3 class="uk-card-title"><span class="uk-link-heading">{{ coach.full_name }}</span></h3>
+                        <p><em>{{ coach.city_name_with_region }}</em></p>
+                        <dl class="uk-description-list uk-description-list-divider">
+                            <dt>Образование:</dt>
+                            <dd>
+                                {% for doc in coach.documents.all %}
+                                    <span class="uk-label uk-text-truncate">{{ doc.institute }}</span>
+                                {% endfor %}
+                            </dd>
+                            <dt>Специализация:</dt>
+                            <dd>
+                                {% for specialization in coach.specializations.all %}
+                                    <span class="uk-label uk-text-truncate">{{ specialization.name }}</span>
+                                {% endfor %}
+                            </dd>
+                        </dl>
+                    </div>
+                </div>
+            </a>
+        {% endfor %}
+        <ul class="uk-pagination">
+            {% if page_obj.has_previous %}
+                <li>
+                    <a href="?q={{ request.GET.q }}&page={{ page_obj.previous_page_number }}">
+                        <span class="uk-margin-small-right" uk-pagination-previous></span> Предыдущий
+                    </a>
+                </li>
+            {% endif %}
+            {% if page_obj.has_next %}
+                <li class="uk-margin-auto-left">
+                    <a href="?q={{ request.GET.q }}&page={{ page_obj.next_page_number }}">
+                        Следующий <span class="uk-margin-small-left" uk-pagination-next></span>
+                    </a>
+                </li>
+            {% endif %}
+        </ul>
+    </div>
+</div>

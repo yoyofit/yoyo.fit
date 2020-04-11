@@ -1,118 +1,19 @@
 {% extends 'yoyo/base.html' %}
-{% load i18n static %}
-
-{% block style %}
-    <link rel="stylesheet" href="{% static 'yoyo/css/main.css' %}">
-{% endblock %}
+{% load i18n %}
 
 {% block title %}
     {% if coaches|length %}
-        {% blocktrans count total=coaches|length %}
-            Search Result &mdash; Found {{ total }} coach.
-        {% plural %}
-            Search Result &mdash; Found {{ total }} coaches.
-        {% endblocktrans %}
+        {% blocktrans count total=coaches|length %}Found {{ total }} coach{% plural %}Found {{ total }} coaches{% endblocktrans %}
     {% else %}
         {% trans 'Coach not found' %}
     {% endif %}
 {% endblock %}
 
 {% block content %}
-    <section class="hero is-danger is-homepage{% if coaches|length == 0 %} is-fullheight{% endif %}">
-        <div class="hero-head">
-            <div class="notification is-light is-danger">
-                {% trans 'If you are a coach and did not find yourself, write to us:' %}
-                <a href="mailto:support@yoyo.fit">support@yoyo.fit</a>
-            </div>
-        </div>
-        <div class="hero-body">
-            <div class="container{% if coaches|length == 0 %} has-text-centered{% endif %}">
-                {% if coaches|length %}
-                    <h1 class="title">{% trans 'Search Result' %}</h1>
-                    <h2 class="subtitle">
-                        {% blocktrans count total=coaches|length %}
-                            Found {{ total }} coach.
-                        {% plural %}
-                            Found {{ total }} coaches.
-                        {% endblocktrans %}
-                    </h2>
-                {% else %}
-                    <h1 class="title">{% trans 'Coach not found!' %}</h1>
-                    <h2 class="subtitle">
-                        {% trans 'Perhaps the coach has not been added to our database yet ...' %}
-                    </h2>
-
-                    <a href="{% url 'yoyo:index' %}" class="button is-medium is-danger is-outlined is-inverted">
-                        {% trans 'Go to home' %}
-                    </a>
-                {% endif %}
-            </div>
-        </div>
-        <div class="hero-foot">
-            {% if coaches|length %}
-                <div class="tabs is-boxed">
-                    <div class="container">
-                        <ul>
-                            <li><a href="{% url 'yoyo:index' %}">{% trans 'Go to home' %}</a></li>
-                        </ul>
-                    </div>
-                </div>
-            {% endif %}
-        </div>
-    </section>
     {% if coaches|length %}
-        <section class="section">
-            {% for coach in coaches %}
-                <div class="box">
-                    <article class="media">
-                        {% if coach.main_photo %}
-                            <div class="media-left">
-                                <figure class="image is-64x64">
-                                    <img src="{{ coach.main_photo.url }}" alt="{{ coach.full_name }}">
-                                </figure>
-                            </div>
-                        {% endif %}
-                        <div class="media-content">
-                            <div class="content">
-                                <p>
-                                    <a href="{% url 'yoyo:detail' pk=coach.pk %}">
-                                        <strong>{{ coach.full_name }}</strong>
-                                    </a>
-                                    <small>
-                                        <span class="tag is-warning is-rounded">
-                                        {{ coach.get_age_display }}
-                                        </span>
-                                    </small>
-                                    <small>{{ coach.city_name_with_region }}</small>
-                                    {% if coach.specializations.count %}
-                                        <br>
-                                        {% trans 'Specialization' %}:
-                                        {% for specialization in coach.specializations.all %}
-                                            <span class="tag is-dark">{{ specialization.name }}</span>
-                                        {% endfor %}
-                                    {% endif %}
-                                    {% if coach.documents.count %}
-                                        <br>
-                                        {% trans 'Education' %}:
-                                        {% for doc in coach.documents.all %}
-                                            <span class="tag is-link">{{ doc.institute }}</span>
-                                        {% endfor %}
-                                    {% endif %}
-                                </p>
-                            </div>
-                        </div>
-                    </article>
-                </div>
-            {% endfor %}
-        </section>
+        {% include 'yoyo/includes/search_result.html' %}
     {% else %}
-        <script>
-            document.addEventListener('keypress', function (event) {
-                if (event.code === 'Enter') {
-                    window.location.href = '{% url "yoyo:index" %}';
-                }
-            });
-        </script>
+        {% include 'yoyo/includes/not_found.html' %}
     {% endif %}
 {% endblock %}
 
