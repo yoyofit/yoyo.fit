@@ -1,0 +1,15 @@
+{% extends 'yoyo/base.html' %}
+
+{% block meta_title %}400{% endblock %}
+{% block meta_description %}Ошибка запроса{% endblock %}
+{% block title %}400 - Ошибка запроса{% endblock %}
+
+{% block content %}
+<div class="uk-section uk-section-secondary uk-flex uk-flex-center uk-flex-middle uk-height-viewport">
+    <div class="uk-container uk-text-center">
+        <h1 class="uk-margin-remove-bottom">Ё-ка-л-м-н!</h1>
+        <h2 class="uk-margin-remove-top">Как-то так получилось, что ничего не получилось.</h2>
+        <a href="{% url 'yoyo:index' %}" class="uk-button uk-button-default">&larr; На главную</a>
+    </div>
+</div>
+{% endblock %}
