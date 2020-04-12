@@ -1,0 +1,25 @@
+{% extends 'yoyo/base.html' %}
+
+{% block meta_title %}500{% endblock %}
+{% block meta_description %}Ошибка на сервере{% endblock %}
+{% block title %}500 - Ошибка на сервере{% endblock %}
+
+{% block content %}
+    <div class="uk-section uk-section-secondary uk-flex uk-flex-center uk-flex-middle uk-height-viewport">
+        <div class="uk-container">
+            <div class="uk-grid-divider uk-child-width-expand@s" uk-grid>
+                <div>
+                    <h1 class="uk-margin-remove-bottom uk-text-danger">Капец!</h1>
+                    <h2 class="uk-margin-remove-top uk-text-warning">Сервер поломался&hellip;</h2>
+                </div>
+                <div>
+                    <p>
+                        Сообщите об этой ошибке:
+                        <a href="mailto:support@yoyo.fit">support@yoyo.fit</a>
+                    </p>
+                    <a href="{% url 'yoyo:index' %}" class="uk-button uk-button-default">&larr; На главную</a>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
