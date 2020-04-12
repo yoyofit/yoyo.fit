@@ -6,7 +6,8 @@
 {% block content %}
     <div class="uk-section uk-section-primary uk-flex uk-flex-center uk-flex-middle uk-height-viewport">
         <div class="container uk-text-center">
-            <h1>База квалифицированных тренеров России</h1>
+            <img src="{% static 'yoyo/images/main_logo.svg' %}" alt="" width="100">
+            <h1 class="uk-margin-remove">База квалифицированных тренеров России</h1>
             <form action="{% url 'yoyo:search' %}">
                 <label for="id_q" class="uk-form-label uk-text-lead">Найди своего тренера</label>
                 <div class="uk-margin">
