@@ -1,0 +1,15 @@
+{% extends 'yoyo/base.html' %}
+
+{% block meta_title %}403{% endblock %}
+{% block meta_description %}Доступ запрещен{% endblock %}
+{% block title %}403 - Доступ запрещен{% endblock %}
+
+{% block content %}
+<div class="uk-section uk-section-secondary uk-flex uk-flex-center uk-flex-middle uk-height-viewport">
+    <div class="uk-container uk-text-center">
+        <h1 class="uk-margin-remove-bottom">Ой!</h1>
+        <h2 class="uk-margin-remove-top">Доступ к запрошенной вами странице запрещён.</h2>
+        <a href="{% url 'yoyo:index' %}" class="uk-button uk-button-default">&larr; На главную</a>
+    </div>
+</div>
+{% endblock %}
