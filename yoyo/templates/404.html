@@ -1,15 +1,26 @@
 {% extends 'yoyo/base.html' %}
+{% load static %}
 
 {% block meta_title %}404{% endblock %}
 {% block meta_description %}Страница не найдена{% endblock %}
 {% block title %}404 - Страница не найдена{% endblock %}
 
 {% block content %}
-<div class="uk-section uk-section-secondary uk-flex uk-flex-center uk-flex-middle uk-height-viewport">
-    <div class="uk-container uk-text-center">
-        <h1 class="uk-margin-remove-bottom">Упс!</h1>
-        <h2 class="uk-margin-remove-top">Страница {{ request_path }} не найдена.</h2>
-        <a href="{% url 'yoyo:index' %}" class="uk-button uk-button-default">&larr; На главную</a>
+    <div class="uk-section uk-section-secondary uk-flex uk-flex-center uk-flex-middle uk-height-viewport">
+        <div class="uk-container">
+            <div class="uk-grid-divider uk-child-width-expand@s" uk-grid>
+                <div>
+                    <h1 class="uk-margin-remove-bottom uk-text-danger">Упс!</h1>
+                    <h2 class="uk-margin-remove-top uk-text-warning">Страница не найдена&hellip;</h2>
+                </div>
+                <div>
+                    <p>Запрошеная страница куда-то делась.</p>
+                    <p>
+                        Может быть её никогда не было, а может быть она перенесена.
+                    </p>
+                    <a href="{% url 'yoyo:index' %}" class="uk-button uk-button-default">&larr; начать с главной</a>
+                </div>
+            </div>
+        </div>
     </div>
-</div>
 {% endblock %}

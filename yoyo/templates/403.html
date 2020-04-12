@@ -5,11 +5,18 @@
 {% block title %}403 - Доступ запрещен{% endblock %}
 
 {% block content %}
-<div class="uk-section uk-section-secondary uk-flex uk-flex-center uk-flex-middle uk-height-viewport">
-    <div class="uk-container uk-text-center">
-        <h1 class="uk-margin-remove-bottom">Ой!</h1>
-        <h2 class="uk-margin-remove-top">Доступ к запрошенной вами странице запрещён.</h2>
-        <a href="{% url 'yoyo:index' %}" class="uk-button uk-button-default">&larr; На главную</a>
+    <div class="uk-section uk-section-secondary uk-flex uk-flex-center uk-flex-middle uk-height-viewport">
+        <div class="uk-container">
+            <div class="uk-grid-divider uk-child-width-expand@s" uk-grid>
+                <div>
+                    <h1 class="uk-margin-remove-bottom uk-text-danger">Ёпрст!</h1>
+                    <h2 class="uk-margin-remove-top uk-text-warning">Доступ запрещён&hellip;</h2>
+                </div>
+                <div>
+                    <p>Запрошенный раздел сайта не доступен.</p>
+                    <a href="{% url 'yoyo:index' %}" class="uk-button uk-button-default">&larr; На главную</a>
+                </div>
+            </div>
+        </div>
     </div>
-</div>
 {% endblock %}
